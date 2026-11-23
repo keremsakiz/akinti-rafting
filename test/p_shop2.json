@@ -1,0 +1,5 @@
+[
+{"eval":"__akinti.save.data.coins = 3000; __akinti.save.data.owned.trail.push('gokkusagi'); __akinti.save.data.equip.trail='gokkusagi'; __akinti.save.commit(); __akinti.openShop('trail');","wait":3500,"shot":"s_trail2"},
+{"eval":"__akinti.shop.hide(); window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9; __akinti.jump(200,60);","wait":2500,"shot":"s_play_trail"},
+{"eval":"__akinti.over();","wait":1200,"shot":"s_over"}
+]

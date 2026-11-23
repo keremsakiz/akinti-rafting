@@ -1,0 +1,4 @@
+[
+{"eval":"__akinti.startRun(); setInterval(()=>{__akinti.S.invuln=5;},100); __akinti.jump(5500);","wait":4000,"shot":"n1"},
+{"eval":"__akinti.S.waveT=0;","wait":600,"shot":"n2"}
+]

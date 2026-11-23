@@ -1,0 +1,12 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1200},
+{"eval":"__akinti.jump(130, 40);","wait":2200,"shot":"b0_valley"},
+{"eval":"__akinti.jump(640, 40);","wait":2200,"shot":"b1_autumn"},
+{"eval":"__akinti.jump(1140, 40);","wait":2200,"shot":"b2_canyon"},
+{"eval":"__akinti.jump(1640, 40);","wait":2200,"shot":"b3_jungle"},
+{"eval":"__akinti.jump(2140, 40);","wait":2200,"shot":"b4_snow"},
+{"eval":"__akinti.jump(2640, 40);","wait":2200,"shot":"b5_night"},
+{"eval":"__akinti.jump(3140, 40);","wait":2200,"shot":"b6_volcano"},
+{"eval":"__akinti.jump(2560, 40);","wait":2200,"shot":"b56_trans"},
+{"log":"info","logEval":"__akinti.info()"}
+]

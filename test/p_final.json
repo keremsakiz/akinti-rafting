@@ -1,0 +1,5 @@
+[
+{"wait":500,"shot":"final_menu"},
+{"eval":"__akinti.startRun();","wait":3000,"shot":"final_play"},
+{"log":"state","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist), __akinti.info()]"}
+]

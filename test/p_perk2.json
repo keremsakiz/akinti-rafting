@@ -1,0 +1,7 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.setQ(3); const D=__akinti.save.data; D.owned.boat=['raft','ship','sub']; D.equip.boat='sub'; D.coins=0; __akinti.save.commit(); __akinti.startRun();","wait":800},
+{"eval":"__akinti.obstacles.forcePat='single'; __akinti.jump(300, 6); __akinti.obstacles.update(0.01,0,300,0,{spawn:true,collide:false}); const r=__akinti.obstacles.list.find(o=>o.type==='rock'); __akinti.S.x=r.x; __akinti.S.targetX=r.x;","wait":1500,"shot":"p_dive"},
+{"log":"dive","logEval":"[__akinti.S.mode, __akinti.S.diveT.toFixed(2), __akinti.S.diveCD.toFixed(1), __akinti.raft.dive.toFixed(2), document.getElementById('pPerk').style.display, document.getElementById('pPerkT').textContent]"},
+{"eval":"__akinti.S.coins = 40; __akinti.S.dist = 1000; __akinti.over && __akinti.over();","wait":1500,"shot":"p_over2"},
+{"log":"earn","logEval":"[__akinti.S.mode, document.getElementById('oEarn').textContent, document.getElementById('oBonus').textContent, __akinti.save.data.coins]"}
+]

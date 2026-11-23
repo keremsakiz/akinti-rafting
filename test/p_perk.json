@@ -1,0 +1,10 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.setQ(3); const D=__akinti.save.data; D.owned.boat=['raft','ship','sub']; D.equip.boat='ship'; __akinti.save.commit(); __akinti.startRun();","wait":800},
+{"log":"perk","logEval":"[JSON.stringify(__akinti.S.perk), __akinti.S.armor, __akinti.raft.vid]"},
+{"eval":"__akinti.obstacles.forcePat='single'; __akinti.jump(300, 6); __akinti.obstacles.update(0.01,0,300,0,{spawn:true,collide:false}); const r=__akinti.obstacles.list.find(o=>o.type==='rock'); __akinti.S.x=r.x; __akinti.S.targetX=r.x;","wait":3500,"shot":"p_armor"},
+{"log":"after1","logEval":"[__akinti.S.mode, __akinti.S.armor, Math.round(__akinti.S.dist)]"},
+{"eval":"__akinti.jump(__akinti.S.dist+10, 6); __akinti.obstacles.update(0.01,0,__akinti.S.dist,0,{spawn:true,collide:false}); const r=__akinti.obstacles.list.find(o=>o.type==='rock' && o.d>__akinti.S.dist); __akinti.S.x=r.x; __akinti.S.targetX=r.x;","wait":4000},
+{"log":"after2","logEval":"[__akinti.S.mode, __akinti.S.armor]"},
+{"wait":3000,"shot":"p_over"},
+{"log":"earn","logEval":"[document.getElementById('oEarn').textContent, document.getElementById('oBonus').textContent]"}
+]

@@ -1,0 +1,9 @@
+[
+{"eval":"localStorage.clear(); const D=__akinti.save.data; D.coins=3000; D.owned.boat=['raft']; D.equip.boat='raft'; __akinti.save.commit(); __akinti.openShop('boat');","wait":2500},
+{"eval":"__akinti.shop.select('sail');","wait":1800,"shot":"b_sel"},
+{"eval":"document.getElementById('shopAction').click();","wait":1500,"shot":"b_bought"},
+{"log":"saved","logEval":"[JSON.stringify(__akinti.save.data.owned.boat), __akinti.save.data.equip.boat, __akinti.save.data.coins, JSON.parse(localStorage.getItem('akinti_save_v1')).equip.boat]"},
+{"eval":"__akinti.shop.setCat('paddle');","wait":1500,"shot":"b_paddle"},
+{"eval":"document.getElementById('shopClose').click();","wait":2500,"shot":"b_menu"},
+{"log":"menu","logEval":"[__akinti.raft.vid, __akinti.S.mode]"}
+]

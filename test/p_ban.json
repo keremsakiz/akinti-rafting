@@ -1,0 +1,5 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.invuln=1e9;","wait":300,"shot":"ban0"},
+{"wait":700,"shot":"ban1"},
+{"eval":"document.getElementById('banner').style.animation='none'; document.getElementById('banner').style.opacity='1'; const p=document.createElement('div'); p.className='pop hot'; p.innerHTML='<b>KIL PAYI!</b><span>+75 · x3</span>'; p.style.animation='none'; document.getElementById('pops').appendChild(p); document.getElementById('pShield').style.display='flex';","wait":400,"shot":"ban2"}
+]

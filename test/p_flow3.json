@@ -1,0 +1,7 @@
+[
+{"eval":"window.__t0=performance.now(); __akinti.jump(1000, 30); window.__tj=performance.now()-window.__t0;","log":"jump ms","logEval":"window.__tj"},
+{"eval":"__akinti.jump(150, 22); __akinti.startRun();","wait":14000},
+{"log":"mode","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist)]"},
+{"wait":22000,"shot":"f4"},
+{"log":"mode","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist)]"}
+]

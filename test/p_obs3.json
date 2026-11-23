@@ -1,0 +1,12 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1200},
+{"eval":"__akinti.obstacles.forcePat='bridge'; __akinti.jump(300, 45);","wait":2600,"shot":"o_bridge"},
+{"eval":"__akinti.obstacles.forcePat='buoys'; __akinti.jump(330, 45);","wait":2600,"shot":"o_buoys"},
+{"eval":"__akinti.obstacles.forcePat='boat'; __akinti.jump(360, 45);","wait":2600,"shot":"o_boat"},
+{"eval":"__akinti.obstacles.forcePat='log'; __akinti.jump(380, 45);","wait":2600,"shot":"o_tree"},
+{"eval":"__akinti.obstacles.forcePat='barrels'; __akinti.jump(400, 45);","wait":2600,"shot":"o_barrels"},
+{"eval":"__akinti.obstacles.forcePat='slalom'; __akinti.jump(420, 45);","wait":2600,"shot":"o_slalom"},
+{"eval":"__akinti.obstacles.forcePat='fall'; __akinti.jump(1110, 80);","wait":1900,"shot":"o_fall1"},
+{"wait":900,"shot":"o_fall2"},
+{"log":"list","logEval":"__akinti.obstacles.list.slice(0,30).map(o=>o.type+':'+o.x.toFixed(1)+'@'+o.d.toFixed(0)+(o.fall?('/h'+o.fall.h.toFixed(1)+' m'+o.fall.mark.toFixed(2)):'')).join(' ')"}
+]

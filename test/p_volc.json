@@ -1,0 +1,4 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.invuln=1e9; __akinti.jump(3150, 26); __akinti.steer(2);","wait":4500,"shot":"volc2"},
+{"eval":"__akinti.jump(3330, 26); __akinti.steer(-2);","wait":4500,"shot":"volc3"}
+]

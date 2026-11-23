@@ -1,0 +1,6 @@
+[
+{"eval":"window.__noAdapt=true;","wait":1500,"shot":"hq_menu"},
+{"eval":"__akinti.startRun(); __akinti.S.invuln=1e9; __akinti.jump(620, 30); __akinti.steer(-2);","wait":5000,"shot":"hq_autumn"},
+{"eval":"__akinti.jump(1640, 30); __akinti.steer(1.5);","wait":5000,"shot":"hq_jungle"},
+{"eval":"__akinti.jump(2650, 30); __akinti.steer(-1);","wait":5000,"shot":"hq_night"}
+]

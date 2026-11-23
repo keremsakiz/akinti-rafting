@@ -1,0 +1,4 @@
+[
+{"eval":"window.__camOverride=[-2.6,0.7,0.6,0,0.15,0.3];","wait":2500,"shot":"c4"},
+{"eval":"__akinti.raft.body.children.forEach((m,i)=>{ if(i===2||i===3) m.visible=false; });","wait":1500,"shot":"c5"}
+]

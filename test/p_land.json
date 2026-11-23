@@ -1,0 +1,4 @@
+[
+{"shot":"land_menu"},
+{"eval":"__akinti.startRun(); __akinti.S.invuln=1e9; __akinti.jump(1100, 24);","wait":3500,"shot":"land_play"}
+]

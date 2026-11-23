@@ -1,0 +1,7 @@
+[
+{"eval":"window.__fps=0; (function f(){window.__fps++; requestAnimationFrame(f);})(); __akinti.startRun(); __akinti.jump(150, 22);","wait":3000,"log":"fps3s","logEval":"window.__fps/3"},
+{"wait":9000,"shot":"f2"},
+{"log":"mode","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist), __akinti.quality()]"},
+{"wait":6000,"shot":"f3"},
+{"log":"mode","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist)]"}
+]

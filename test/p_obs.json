@@ -1,0 +1,9 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.invuln=1e9; __akinti.jump(300, 22);","wait":2500,"shot":"ob1"},
+{"wait":1200,"shot":"ob2"},
+{"eval":"__akinti.jump(2100, 22)","wait":2500,"shot":"ob3"},
+{"eval":"__akinti.jump(1650, 22)","wait":2500,"shot":"ob4"},
+{"eval":"__akinti.jump(3100, 22)","wait":2500,"shot":"ob5"},
+{"wait":1500,"shot":"ob6"},
+{"log":"types","logEval":"__akinti.obstacles.list.map(o=>o.type+':'+Math.round(o.d-__akinti.S.dist)).join(' ')"}
+]

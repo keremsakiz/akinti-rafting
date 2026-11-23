@@ -1,0 +1,10 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.dist=400; window.__camOverride=[3.2,1.3,1.2,0,0.4,-1.0];","wait":2500},
+{"eval":"__akinti.S.waveT=0; __akinti.S.slapT=0;","wait":300,"shot":"w1"},
+{"wait":500,"shot":"w2"},
+{"wait":500,"shot":"w3"},
+{"wait":700,"shot":"w4"},
+{"eval":"window.__camOverride=null; __akinti.S.waveT=0;","wait":600,"shot":"w5"},
+{"wait":600,"shot":"w6"},
+{"log":"fps","logEval":"__akinti.info()"}
+]

@@ -1,0 +1,5 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.invuln=1e9; __akinti.life.birdTimer=0; __akinti.life.fishTimer=0;","wait":2500,"shot":"life1"},
+{"eval":"const f=__akinti.life.flocks[0]; if(f){f.d=__akinti.S.dist+40; f.x=-8; f.y=9;} __akinti.life.fishTimer=0;","wait":1500,"shot":"life2"},
+{"log":"flocks","logEval":"__akinti.life.flocks.map(f=>[Math.round(f.x),Math.round(f.y),Math.round(f.d-__akinti.S.dist)])"}
+]

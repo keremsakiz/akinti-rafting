@@ -1,0 +1,5 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1500},
+{"eval":"__akinti.jump(150, 60); window.__camOverride=[2.2,2.6,4.2, 0,0.6,-0.5];","wait":500,"shot":"rc_side"},
+{"eval":"window.__camOverride=[0,3.2,4.6, 0,0.5,-1.0];","wait":300,"shot":"rc_back"}
+]

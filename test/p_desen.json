@@ -1,0 +1,8 @@
+[
+{"eval":"__akinti.save.data.coins = 50000; __akinti.save.commit(); __akinti.openShop('raft'); __akinti.raft.setVessel('yacht'); __akinti.shop.select('alev'); window.__camOverride=[3.3,2.0,2.4,0,0.4,-0.3];","wait":3000,"shot":"d_yacht"},
+{"eval":"__akinti.raft.setVessel('sail'); __akinti.raft.setSkin(__akinti.shopItem('raft','kamuflaj'));","wait":2000,"shot":"d_sail"},
+{"eval":"__akinti.raft.setVessel('ship'); __akinti.raft.setSkin(__akinti.shopItem('raft','okyanus')); window.__camOverride=[4.3,2.8,4.6,0,1.2,-0.2];","wait":2000,"shot":"d_ship"},
+{"eval":"__akinti.raft.setVessel('sub'); __akinti.raft.setSkin(__akinti.shopItem('raft','altin')); window.__camOverride=[3.3,1.8,3.4,0,0.5,-0.2];","wait":2000,"shot":"d_sub"},
+{"eval":"__akinti.raft.setVessel('rib'); __akinti.raft.setSkin(__akinti.shopItem('raft','gece')); window.__camOverride=[2.6,1.6,-2.2,0,0.4,0];","wait":2000,"shot":"d_rib"},
+{"eval":"__akinti.raft.setVessel('yacht'); __akinti.raft.setSkin(__akinti.shopItem('raft','kutup')); window.__camOverride=[-2.8,1.0,-1.6,0,0.3,0];","wait":2000,"shot":"d_yacht2"}
+]

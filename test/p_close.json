@@ -1,0 +1,5 @@
+[
+{"eval":"window.__camOverride=[3.4,3.0,4.4,-0.2,0.2,-0.4];","wait":2500,"shot":"c1"},
+{"eval":"window.__camOverride=[-3.6,1.2,1.5,0,0.1,-0.4];","wait":2500,"shot":"c2"},
+{"eval":"window.__camOverride=[0.5,0.9,-5.5,0,0.2,0];","wait":2500,"shot":"c3"}
+]

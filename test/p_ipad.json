@@ -1,0 +1,5 @@
+[
+{"wait":800,"shot":"i_menu"},
+{"eval":"__akinti.openShop('raft');","wait":3500,"shot":"i_shop"},
+{"eval":"__akinti.setQ && __akinti.setQ(0);","wait":2500,"shot":"i_shop_q0"}
+]

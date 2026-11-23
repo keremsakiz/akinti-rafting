@@ -1,0 +1,6 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.invuln=1e9;","wait":1800,"shot":"banner"},
+{"eval":"__akinti.jump(985, 60)","wait":2500,"shot":"tr_canyon"},
+{"eval":"__akinti.jump(1985, 60)","wait":2500,"shot":"tr_snow"},
+{"eval":"__akinti.jump(2490, 60)","wait":2500,"shot":"tr_night"}
+]

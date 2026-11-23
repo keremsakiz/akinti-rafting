@@ -1,0 +1,14 @@
+import { chromium } from '/opt/npm-tools/node_modules/playwright/index.mjs';
+const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+const page = await browser.newPage({ viewport: { width: 900, height: 700 } });
+const logs = [];
+page.on('console', (m) => logs.push(`[${m.type()}] ${m.text()}`));
+page.on('pageerror', (e) => logs.push(`[pageerror] ${e.message}`));
+await page.goto('file:///home/claude/akinti/test/viewer/index.html');
+await page.waitForTimeout(500);
+const r = await page.evaluate(process.argv[2] || 'go()');
+console.log(JSON.stringify(r, null, 0));
+await page.waitForTimeout(300);
+await page.screenshot({ path: process.argv[3] || '/home/claude/akinti/test/out/viewer.png' });
+console.log(logs.join('\n'));
+await browser.close();

@@ -1,0 +1,7 @@
+[
+{"wait":600,"shot":"f_menu"},
+{"eval":"__akinti.startRun();","wait":2500},
+{"eval":"__akinti.obstacles.forcePat='gate'; __akinti.steer(4.8);","wait":5000,"shot":"f_crash"},
+{"wait":1500,"shot":"f_over"},
+{"log":"state","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist), __akinti.quality()]"}
+]

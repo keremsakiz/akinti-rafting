@@ -1,0 +1,8 @@
+[
+{"eval":"__akinti.save.data.coins = 50000; __akinti.save.commit(); __akinti.openShop('boat');","wait":3000,"shot":"v_raft"},
+{"eval":"__akinti.shop.select('rib');","wait":2500,"shot":"v_rib"},
+{"eval":"__akinti.shop.select('sail');","wait":2500,"shot":"v_sail"},
+{"eval":"__akinti.shop.select('yacht');","wait":2500,"shot":"v_yacht"},
+{"eval":"__akinti.shop.select('ship');","wait":2500,"shot":"v_ship"},
+{"eval":"__akinti.shop.select('sub');","wait":2500,"shot":"v_sub"}
+]

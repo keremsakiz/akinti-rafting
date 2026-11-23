@@ -1,0 +1,7 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1200},
+{"eval":"__akinti.jump(2640, 40);","wait":2400,"shot":"n1"},
+{"eval":"__akinti.obstacles.forcePat='buoys'; __akinti.jump(2700, 30);","wait":900,"shot":"n2"},
+{"eval":"__akinti.obstacles.forcePat=null; __akinti.jump(3150, 40);","wait":2400,"shot":"v1"},
+{"log":"info","logEval":"__akinti.info()"}
+]

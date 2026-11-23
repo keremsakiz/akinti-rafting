@@ -1,0 +1,5 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.invuln=1e9; __akinti.jump(400, 30);","wait":6000,"log":"valley","logEval":"[__akinti.S.cpuMs.toFixed(2), __akinti.info()]"},
+{"eval":"__akinti.jump(1600, 30);","wait":6000,"log":"jungle","logEval":"[__akinti.S.cpuMs.toFixed(2), __akinti.info()]"},
+{"eval":"__akinti.jump(2100, 30);","wait":6000,"log":"snow","logEval":"[__akinti.S.cpuMs.toFixed(2), __akinti.info()]"}
+]

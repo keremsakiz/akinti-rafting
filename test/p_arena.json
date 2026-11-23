@@ -1,0 +1,7 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1000},
+{"eval":"__akinti.jump(1000, 40);","wait":2200,"shot":"a_1000"},
+{"eval":"__akinti.jump(1880, 40);","wait":2600,"shot":"a_1880"},
+{"eval":"__akinti.jump(7010, 40);","wait":2200,"shot":"a_7010"},
+{"log":"biome","logEval":"[__akinti.S.biomeK, document.getElementById('bname').textContent, document.getElementById('bsub').textContent]"}
+]

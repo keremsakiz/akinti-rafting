@@ -1,0 +1,6 @@
+[
+{"wait":500},
+{"log":"quality","logEval":"__akinti.quality()"},
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9; __akinti.jump(700, 40);","wait":2500,"shot":"q_autumn"},
+{"log":"info","logEval":"__akinti.info()"}
+]

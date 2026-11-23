@@ -1,0 +1,7 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1200},
+{"eval":"__akinti.jump(160, 60); window.__camOverride=[3.5,3.2,5.5, 7,1.0,-8];","wait":900,"shot":"bank_valley"},
+{"eval":"__akinti.jump(2700, 60); window.__camOverride=[3.5,3.2,5.5, 7,1.0,-8];","wait":900,"shot":"bank_night"},
+{"eval":"window.__camOverride=null; __akinti.jump(240, 60);","wait":1500,"shot":"valley_play"},
+{"log":"info","logEval":"__akinti.info()"}
+]

@@ -1,0 +1,9 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.setQ(3); __akinti.startRun();","wait":800},
+{"eval":"__akinti.obstacles.forcePat='single'; __akinti.jump(300, 6); __akinti.obstacles.update(0.01,0,300,0,{spawn:true,collide:false}); const r=__akinti.obstacles.list.find(o=>o.type==='rock'); __akinti.S.x=r.x; __akinti.S.targetX=r.x;","wait":5000},
+{"log":"state","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist), __akinti.S.dieT]"},
+{"wait":2500,"shot":"f_crash"},
+{"log":"state1","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist), __akinti.S.dieT]"},
+{"wait":12000,"shot":"f_over"},
+{"log":"state2","logEval":"[__akinti.S.mode, Math.round(__akinti.S.dist)]"}
+]

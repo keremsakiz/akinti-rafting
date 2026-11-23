@@ -1,0 +1,7 @@
+[
+{"eval":"window.__camOverride=[3.4,3.0,4.4,-0.2,0.2,-0.4];","wait":2500,"shot":"h1"},
+{"eval":"window.__camOverride=[-2.2,0.9,1.2,0,0.15,-0.3];","wait":2000,"shot":"h2"},
+{"eval":"window.__camOverride=null; __akinti.startRun(); __akinti.S.dist=300;","wait":3500,"shot":"h3"},
+{"eval":"window.__camOverride=[2.8,1.6,3.6,0,0.3,-1.2];","wait":1200,"shot":"h4"},
+{"eval":"__akinti.steer(4);","wait":700,"shot":"h5"}
+]

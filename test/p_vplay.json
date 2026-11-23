@@ -1,0 +1,8 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.dist=200; setInterval(()=>{__akinti.S.invuln=5;},100); __akinti.raft.setVessel('rib');","wait":3000,"shot":"g_rib"},
+{"eval":"__akinti.raft.setVessel('sail');","wait":1500,"shot":"g_sail"},
+{"eval":"__akinti.raft.setVessel('yacht');","wait":1500,"shot":"g_yacht"},
+{"eval":"__akinti.raft.setVessel('ship');","wait":1500,"shot":"g_ship"},
+{"eval":"__akinti.raft.setVessel('sub');","wait":1500,"shot":"g_sub"},
+{"eval":"__akinti.S.diveT=1.3;","wait":900,"shot":"g_dive"}
+]

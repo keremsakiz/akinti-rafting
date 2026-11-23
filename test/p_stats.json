@@ -1,0 +1,5 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1200},
+{"eval":"__akinti.jump(240, 60);","wait":1500},
+{"log":"stats","logEval":"__akinti.meshStats()"}
+]

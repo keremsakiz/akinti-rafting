@@ -1,0 +1,6 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1500},
+{"eval":"__akinti.jump(330, 26); __akinti.obstacles.makeRow = ((orig)=>function(D){ const o=this; const r=o.rng; return orig.call(o,D);})(__akinti.obstacles.makeRow);","wait":4000,"shot":"o_valley"},
+{"log":"list","logEval":"__akinti.obstacles.list.slice(0,40).map(o=>o.type+':'+o.x.toFixed(1)+'@'+o.d.toFixed(0)).join(' ')"},
+{"log":"info","logEval":"__akinti.info()"}
+]

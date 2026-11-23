@@ -1,0 +1,9 @@
+[
+{"eval":"__akinti.startRun(); __akinti.S.dist=400; setInterval(()=>{__akinti.S.invuln=5;},100);","wait":2500},
+{"eval":"__akinti.S.waveT=0;","wait":250,"shot":"v1"},
+{"wait":350,"shot":"v2"},
+{"wait":500,"shot":"v3"},
+{"eval":"window.__camOverride=[2.6,1.5,4.2,0,0.4,-1.0]; __akinti.S.waveT=0;","wait":300,"shot":"v4"},
+{"wait":400,"shot":"v5"},
+{"wait":500,"shot":"v6"}
+]

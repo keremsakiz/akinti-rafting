@@ -1,0 +1,11 @@
+[
+{"eval":"window.__noAdapt=true; __akinti.startRun(); __akinti.S.invuln=1e9;","wait":1200},
+{"eval":"__akinti.obstacles.forcePat='bridge'; __akinti.jump(300, 30);","wait":700,"shot":"c_bridge"},
+{"eval":"__akinti.obstacles.forcePat='buoys'; __akinti.jump(330, 30);","wait":700,"shot":"c_buoys"},
+{"eval":"__akinti.obstacles.forcePat='boat'; __akinti.jump(360, 30);","wait":700,"shot":"c_boat"},
+{"eval":"__akinti.obstacles.forcePat='log'; __akinti.jump(380, 30);","wait":700,"shot":"c_tree"},
+{"eval":"__akinti.obstacles.forcePat='barrels'; __akinti.jump(400, 30);","wait":700,"shot":"c_barrels"},
+{"eval":"__akinti.obstacles.forcePat='slalom'; __akinti.jump(420, 30);","wait":700,"shot":"c_slalom"},
+{"eval":"__akinti.obstacles.forcePat='fall'; __akinti.jump(1110, 80);","wait":2300,"shot":"c_fall1"},
+{"eval":"__akinti.obstacles.forcePat='fall'; __akinti.jump(3120, 80);","wait":2300,"shot":"c_lava"}
+]

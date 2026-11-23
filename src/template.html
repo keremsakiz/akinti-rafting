@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b2a33">
+<title>AKINTI — Rafting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --sat: env(safe-area-inset-top, 0px); --sab: env(safe-area-inset-bottom, 0px); --sal: env(safe-area-inset-left, 0px); --sar: env(safe-area-inset-right, 0px); --orange: #ff7a1a; --ink: #0d2128; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0b2a33; overscroll-behavior: none; }
+  body { font-family: 'Baloo 2', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #fff; user-select: none; -webkit-user-select: none; touch-action: none; }
+  #c { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; touch-action: none; }
+  .hidden { display: none !important; }
+  button { font-family: inherit; cursor: pointer; border: 0; }
+
+  /* HUD */
+  #hud { position: fixed; left: 0; right: 0; top: 0; padding: calc(var(--sat) + 10px) calc(var(--sar) + 14px) 0 calc(var(--sal) + 14px); display: flex; align-items: flex-start; justify-content: space-between; pointer-events: none; }
+  .ibtn { pointer-events: auto; width: 44px; height: 44px; border-radius: 50%; background: rgba(8, 24, 30, .38); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: grid; place-items: center; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.18); }
+  .ibtn svg { width: 20px; height: 20px; }
+  #btnMute.off .on { display: none; } #btnMute:not(.off) .offi { display: none; }
+  .scorebox { text-align: center; line-height: 1; }
+  #score { font-size: 46px; font-weight: 800; letter-spacing: .5px; text-shadow: 0 2px 0 rgba(0,0,0,.18), 0 4px 18px rgba(0,0,0,.35); font-variant-numeric: tabular-nums; }
+  .sub { margin-top: 4px; font-size: 15px; font-weight: 700; opacity: .95; display: flex; gap: 10px; justify-content: center; align-items: center; text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+  .coin { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff6b8, #ffcf2e 45%, #c98a00); box-shadow: 0 0 0 1.5px #a86f00 inset; vertical-align: -2px; margin-right: 4px; }
+  #powers { position: fixed; top: calc(var(--sat) + 104px); left: 0; right: 0; display: flex; gap: 8px; justify-content: center; pointer-events: none; }
+  .pw { display: none; align-items: center; gap: 6px; padding: 4px 10px 4px 6px; border-radius: 99px; background: rgba(8,24,30,.45); font-weight: 800; font-size: 13px; position: relative; overflow: hidden; }
+  .pw i { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 12px; }
+  .pw::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: calc(var(--p, 1) * 100%); background: currentColor; }
+  #pShield { color: #7ff3ff; } #pShield i { background: #1fb6d6; color: #fff; }
+  #pMagnet { color: #ff8a95; } #pMagnet i { background: #e2343f; color: #fff; }
+  #pPerk { color: #ffd76a; } #pPerk i { background: #e09a12; color: #fff; } #pPerk.wait { opacity: .6; }
+
+  /* banner */
+  #banner { position: fixed; left: 0; right: 0; top: 26%; text-align: center; pointer-events: none; opacity: 0; }
+  #banner.show { animation: ban 3.2s ease forwards; }
+  #bsub { font-size: 14px; font-weight: 700; letter-spacing: 4px; opacity: .9; }
+  #bname { font-size: clamp(30px, 9vw, 54px); font-weight: 800; letter-spacing: 3px; line-height: 1.05; text-shadow: 0 3px 0 rgba(0,0,0,.15), 0 6px 26px rgba(0,0,0,.4); }
+  #banner .line { width: 0; height: 3px; margin: 6px auto 0; background: linear-gradient(90deg, transparent, #fff, transparent); animation: inherit; }
+  #banner.show .line { animation: line 3.2s ease forwards; }
+  @keyframes ban { 0% { opacity: 0; transform: translateY(14px) scale(.96); } 12% { opacity: 1; transform: none; } 78% { opacity: 1; } 100% { opacity: 0; transform: translateY(-10px); } }
+  @keyframes line { 0% { width: 0; } 25% { width: 220px; } 100% { width: 220px; } }
+
+  /* popups */
+  #pops { position: fixed; left: 0; right: 0; top: 36%; pointer-events: none; display: flex; flex-direction: column; align-items: center; }
+  .pop { text-align: center; animation: pop 1.25s cubic-bezier(.2,.9,.3,1.3) forwards; text-shadow: 0 2px 10px rgba(0,0,0,.4); }
+  .pop b { display: block; font-size: 26px; font-weight: 800; letter-spacing: 1px; color: #fff; }
+  .pop span { display: block; font-size: 17px; font-weight: 800; color: #ffe066; }
+  .pop.hot b { color: #ffb347; } .pop.cyan b { color: #8ff6ff; } .pop.red b { color: #ff9aa2; }
+  @keyframes pop { 0% { opacity: 0; transform: scale(.6); } 15% { opacity: 1; transform: scale(1.08); } 30% { transform: scale(1); } 75% { opacity: 1; } 100% { opacity: 0; transform: translateY(-36px); } }
+
+  /* hint */
+  #hint { position: fixed; left: 50%; bottom: calc(var(--sab) + 4%); transform: translateX(-50%); text-align: center; pointer-events: none; opacity: 0; transition: opacity .4s; font-weight: 800; font-size: 16px; text-shadow: 0 2px 8px rgba(0,0,0,.5); }
+  #hint.show { opacity: 1; }
+  .hand { width: 46px; height: 46px; margin: 0 auto 6px; animation: swipe 1.4s ease-in-out infinite; }
+  @keyframes swipe { 0%,100% { transform: translateX(-38px); } 50% { transform: translateX(38px); } }
+
+  /* screens */
+  .screen { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: calc(var(--sat) + 20px) calc(var(--sar) + 24px) calc(var(--sab) + 24px) calc(var(--sal) + 24px); }
+  /* game feel: squash-and-stretch pops on the HUD (ends exactly at rest) */
+  #coins { display: inline-block; }
+  .bump { animation: bump .32s cubic-bezier(.2,.9,.3,1.6); }
+  .bump-hot { animation: bumpHot .42s cubic-bezier(.2,.9,.3,1.6); }
+  @keyframes bump { 0% { transform: scale(1.28, .8); } 100% { transform: none; } }
+  @keyframes bumpHot { 0% { transform: scale(1.45, .72); color: #ffb347; } 100% { transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .bump, .bump-hot { animation-duration: .01s; } }
+  /* water on the lens after a big wave hit */
+  #lens { position: fixed; inset: 0; pointer-events: none; opacity: 0; }
+  #lens.on { animation: lens 1.1s ease-out forwards; }
+  @keyframes lens { 0% { opacity: var(--k, .8); transform: translateY(0); } 25% { opacity: var(--k, .8); } 100% { opacity: 0; transform: translateY(18px); } }
+  /* keyboard / gamepad focus: distinct from hover */
+  .btn:focus-visible, .btn2:focus-visible, .ibtn:focus-visible, .opt:focus-visible, .tab:focus-visible { outline: 3px solid #ffe066; outline-offset: 3px; }
+  /* comfort settings on the pause screen */
+  .opts { display: flex; flex-direction: column; gap: 10px; width: min(280px, 86vw); margin: 0 0 22px; }
+  .opt { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; padding: 10px 16px; border-radius: 14px; background: rgba(255,255,255,.12); color: #fff; font-size: 16px; font-weight: 800; letter-spacing: 1px; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.22); }
+  .opt b { color: #ffe066; font-weight: 800; }
+  .opt:active { transform: translateY(2px); }
+  #menu { justify-content: space-between; background: linear-gradient(180deg, rgba(4,20,28,.55) 0%, rgba(4,20,28,0) 32%, rgba(4,20,28,0) 58%, rgba(4,20,28,.72) 100%); cursor: pointer; }
+  .title { margin-top: 6vh; }
+  .title h1 { margin: 0; font-size: clamp(64px, 21vw, 120px); font-weight: 800; letter-spacing: 4px; line-height: .9; color: #fff;
+    text-shadow: 0 4px 0 #e2601a, 0 8px 0 rgba(0,0,0,.18), 0 14px 40px rgba(0,0,0,.45); }
+  .title p { margin: 10px 0 0; font-size: 16px; font-weight: 800; letter-spacing: 9px; opacity: .95; text-shadow: 0 2px 8px rgba(0,0,0,.5); }
+  .menu-bottom { margin-bottom: 4vh; }
+  .tap { font-size: 20px; font-weight: 800; letter-spacing: 2px; animation: pulse 1.6s ease-in-out infinite; text-shadow: 0 2px 10px rgba(0,0,0,.5); }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .55; transform: scale(.97); } }
+  .bestline { margin-top: 10px; font-size: 15px; font-weight: 700; opacity: .9; }
+  .how { margin: 18px auto 0; max-width: 300px; font-size: 14px; line-height: 1.35; opacity: .85; font-weight: 600; }
+
+  #over { background: rgba(4, 18, 24, .55); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+  .card { width: min(340px, 92vw); padding: 22px 22px 20px; border-radius: 26px; background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.07)); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.2), 0 20px 60px rgba(0,0,0,.4); animation: rise .45s cubic-bezier(.2,.9,.3,1.2); }
+  @keyframes rise { from { opacity: 0; transform: translateY(30px) scale(.95); } to { opacity: 1; transform: none; } }
+  .card h2 { margin: 0; font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #ffb36b; text-shadow: 0 3px 0 rgba(0,0,0,.2); }
+  .big { font-size: 64px; font-weight: 800; line-height: 1; margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
+  #oNew { display: none; margin: 6px 0 4px; padding: 4px 12px; border-radius: 99px; background: #ffd23f; color: #3a2a00; font-weight: 800; font-size: 14px; letter-spacing: 1px; animation: pulse 1s infinite; }
+  .stats { margin: 14px 0 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat { background: rgba(0,0,0,.2); border-radius: 14px; padding: 8px 10px; text-align: left; }
+  .stat small { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; opacity: .7; }
+  .stat b { font-size: 18px; font-weight: 800; }
+  .stat.wide { grid-column: span 2; }
+  .btn { width: 100%; padding: 14px 18px; border-radius: 18px; background: linear-gradient(180deg, #ff9a3c, #ff6a13); color: #fff; font-size: 22px; font-weight: 800; letter-spacing: 1.5px; box-shadow: 0 6px 0 #b8460a, 0 12px 26px rgba(255,106,19,.35); }
+  .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #b8460a; }
+  #pause { background: rgba(4,18,24,.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  #pause h2 { font-size: 34px; letter-spacing: 3px; margin: 0 0 20px; }
+  #fade { position: fixed; inset: 0; background: #e9fbff; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  #fade.on { opacity: 1; }
+  #loading { position: fixed; inset: 0; background: #0b2a33; display: grid; place-items: center; font-weight: 800; letter-spacing: 6px; transition: opacity .6s; z-index: 10; }
+  #loading.gone { opacity: 0; pointer-events: none; }
+  #nogl { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 30px; text-align: center; background: #0b2a33; z-index: 20; }
+  /* wallet + shop */
+  .wallet { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px 6px 10px; border-radius: 99px; background: rgba(8,24,30,.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-weight: 800; font-size: 18px; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.18); font-variant-numeric: tabular-nums; }
+  .wallet .coin, .btn .coin, .btn2 .coin { width: 17px; height: 17px; }
+  #menuWallet { position: absolute; top: calc(var(--sat) + 12px); right: calc(var(--sar) + 14px); }
+  .btn2 { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 22px; border-radius: 16px; background: rgba(255,255,255,.14); color: #fff; font-size: 18px; font-weight: 800; letter-spacing: 1.5px; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.28), 0 6px 18px rgba(0,0,0,.25); }
+  .btn2:active { transform: translateY(2px); }
+  .btn2 svg { width: 20px; height: 20px; }
+  #btnShop { margin-bottom: 18px; }
+  .row { display: flex; gap: 10px; }
+  .row .btn { flex: 1.6; } .row .btn2 { flex: 1; padding: 11px 10px; }
+  .earn { margin: -6px 0 14px; font-size: 15px; font-weight: 700; opacity: .95; }
+  .earn b { color: #ffe066; }
+  body.shop-open #menu { display: none; }
+  #shop { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+  #shop .top { position: absolute; top: calc(var(--sat) + 10px); left: calc(var(--sal) + 14px); right: calc(var(--sar) + 14px); display: flex; justify-content: space-between; align-items: center; }
+  #shop .top > * { pointer-events: auto; }
+  .sheet { position: absolute; left: 0; right: 0; bottom: 0; height: min(57vh, 540px); pointer-events: auto; background: linear-gradient(180deg, rgba(12,38,46,.94), rgba(6,22,28,.98)); border-radius: 26px 26px 0 0; padding: 12px 14px calc(var(--sab) + 14px); display: flex; flex-direction: column; box-shadow: 0 -10px 40px rgba(0,0,0,.35); animation: sheetIn .35s cubic-bezier(.2,.9,.3,1.1); }
+  @keyframes sheetIn { from { transform: translateY(40%); opacity: 0; } to { transform: none; opacity: 1; } }
+  .sheet h3 { margin: 0 0 8px; text-align: center; font-size: 20px; letter-spacing: 4px; }
+  .tabs { display: flex; gap: 4px; background: rgba(0,0,0,.28); padding: 4px; border-radius: 14px; }
+  .tab { flex: 1; padding: 8px 0; border-radius: 10px; background: transparent; color: rgba(255,255,255,.7); font-weight: 800; font-size: 13px; letter-spacing: 1px; }
+  .tab.on { background: linear-gradient(180deg, #ff9a3c, #ff6a13); color: #fff; }
+  .grid { flex: 1; min-height: 0; overflow-y: auto; touch-action: pan-y; -webkit-overflow-scrolling: touch; display: grid; grid-template-columns: repeat(auto-fill, minmax(98px, 1fr)); gap: 8px; padding: 10px 2px; align-content: start; }
+  .item { position: relative; background: rgba(255,255,255,.07); border-radius: 16px; padding: 7px 6px 7px; color: #fff; display: flex; flex-direction: column; align-items: center; gap: 3px; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.08); }
+  .item.sel { box-shadow: inset 0 0 0 2.5px #ffb347; background: rgba(255,179,71,.13); }
+  .item .sw { width: 100%; height: 60px; flex: none; border-radius: 10px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.18), inset 0 -8px 14px rgba(0,0,0,.18); }
+  .item .nm { font-size: 13px; font-weight: 800; line-height: 1.1; }
+  .item .price { font-size: 13px; font-weight: 800; color: #ffe066; display: inline-flex; align-items: center; }
+  .item .price .coin { width: 12px; height: 12px; }
+  .item .price.poor { opacity: .45; }
+  .tag { font-size: 10px; font-weight: 800; letter-spacing: 1px; opacity: .7; padding-top: 2px; }
+  .tag.on { color: #7dffb0; opacity: 1; }
+  .info { display: flex; flex-direction: column; align-items: center; margin: 0 0 10px; min-height: 40px; text-align: center; }
+  .info b { font-size: 18px; line-height: 1.2; } .info span { font-size: 13px; opacity: .75; font-weight: 600; }
+  #shopAction { font-size: 20px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  #shopAction.dim { background: rgba(255,255,255,.12); box-shadow: none; color: rgba(255,255,255,.75); font-size: 16px; }
+  /* tablets / wide screens: a centred sheet in portrait, a side panel in landscape */
+  @media (min-width: 620px) { .sheet { left: 50%; right: auto; width: 560px; margin-left: -280px; } }
+  @media (min-aspect-ratio: 11/10) {
+    .sheet { left: auto; right: 12px; margin-left: 0; top: calc(var(--sat) + 64px); bottom: calc(var(--sab) + 12px); height: auto;
+      width: min(430px, 46vw); border-radius: 24px; padding-bottom: 14px; animation-name: sheetInR; }
+    @keyframes sheetInR { from { transform: translateX(30%); opacity: 0; } to { transform: none; opacity: 1; } }
+  }
+  #shopAction.buy { background: linear-gradient(180deg, #ffe066, #f5a300); box-shadow: 0 6px 0 #a86f00, 0 12px 26px rgba(245,163,0,.35); color: #3a2600; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="hud" class="hidden">
+  <button class="ibtn" id="btnPause" aria-label="Duraklat"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg></button>
+  <div class="scorebox">
+    <div id="score">0</div>
+    <div class="sub"><span id="dist">0 m</span><span><i class="coin"></i><span id="coins">0</span></span></div>
+  </div>
+  <button class="ibtn" id="btnMute" aria-label="Ses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" stroke="none"/><path class="on" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="offi" d="M17 9l5 6M22 9l-5 6"/></svg></button>
+</div>
+<div id="powers"><div class="pw" id="pShield"><i>⛨</i>KALKAN</div><div class="pw" id="pMagnet"><i>U</i>MIKNATIS</div><div class="pw" id="pPerk"><i>★</i><span id="pPerkT">ZIRH</span></div></div>
+<div id="banner"><div id="bsub"></div><div id="bname"></div><div class="line"></div></div>
+<div id="pops"></div>
+<div id="hint"><svg class="hand" viewBox="0 0 48 48" fill="#fff"><path d="M19 6a3 3 0 0 1 6 0v13l1.2-.3a3 3 0 0 1 3.6 2.1l.2.8 1-.2a3 3 0 0 1 3.5 2.2l.1.6.6-.1a3 3 0 0 1 3.5 2.4l1 7.6a10 10 0 0 1-2.3 7.8L35 44H20l-7.6-9.4a3 3 0 0 1 4.5-4l2.1 2.2z" opacity=".95"/></svg>Parmağını sağa-sola kaydır</div>
+
+<div id="menu" class="screen">
+  <div class="wallet" id="menuWallet"><i class="coin"></i><b id="walletCoins">0</b></div>
+  <div class="title"><h1>AKINTI</h1><p>RAFTING</p></div>
+  <div class="menu-bottom">
+    <button class="btn2" id="btnShop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>MAĞAZA</button>
+    <div class="tap">BAŞLAMAK İÇİN DOKUN</div>
+    <div class="bestline">En iyi skor: <b id="best">0</b></div>
+    <div class="how">Parmağını sağa-sola kaydırarak kayalardan, köprü ayaklarından, şamandıralardan ve kayıklardan kaç. Topladığın altınlarla mağazadan yeni teknelerin kilidini aç: yelkenliden denizaltıya, her birinin kendi yeteneği var. Her yeni manzaraya ulaşmak öncekinden uzun sürer.</div>
+  </div>
+</div>
+
+<div id="over" class="screen hidden">
+  <div class="card">
+    <h2>BATTIN!</h2>
+    <div class="big" id="oScore">0</div>
+    <div id="oNew">YENİ REKOR!</div>
+    <div class="stats">
+      <div class="stat"><small>MESAFE</small><b id="oDist">0 m</b></div>
+      <div class="stat"><small>ALTIN</small><b id="oCoins">0</b></div>
+      <div class="stat"><small>KIL PAYI</small><b id="oNear">0</b></div>
+      <div class="stat"><small>EN İYİ</small><b id="oBest">0</b></div>
+      <div class="stat wide"><small>ULAŞILAN YER</small><b id="oBiome">-</b></div>
+    </div>
+    <div class="earn">+<b id="oEarn">0</b> altın kazandın<span id="oBonus"></span> · cüzdan: <b id="oWallet">0</b></div>
+    <div class="row"><button class="btn" id="btnAgain">TEKRAR OYNA</button><button class="btn2" id="btnShopOver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>MAĞAZA</button></div>
+  </div>
+</div>
+
+<div id="shop" class="hidden">
+  <div class="top">
+    <button class="ibtn" id="shopClose" aria-label="Kapat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="wallet"><i class="coin"></i><b id="shopCoins">0</b></div>
+  </div>
+  <div class="sheet">
+    <h3>MAĞAZA</h3>
+    <div class="tabs"><button class="tab" data-cat="boat">BOT</button><button class="tab" data-cat="raft">DESEN</button><button class="tab" data-cat="crew">EKİP</button><button class="tab" data-cat="paddle">KÜREK</button><button class="tab" data-cat="trail">İZ</button></div>
+    <div class="grid" id="shopGrid"></div>
+    <div class="info"><b id="shopName"></b><span id="shopDesc"></span></div>
+    <button class="btn" id="shopAction">KULLAN</button>
+  </div>
+</div>
+
+<div id="pause" class="screen hidden"><h2>DURAKLATILDI</h2>
+  <div class="opts">
+    <button class="opt" id="optShake">EKRAN SARSINTISI <b id="optShakeV">TAM</b></button>
+    <button class="opt" id="optHaptic">TİTREŞİM <b id="optHapticV">AÇIK</b></button>
+  </div>
+  <button class="btn" id="btnResume" style="max-width:260px">DEVAM ET</button></div>
+<div id="lens"></div>
+<div id="fade"></div>
+<div id="loading">AKINTI<small style="display:block;font-size:12px;letter-spacing:3px;opacity:.6;margin-top:8px;text-align:center">YÜKLENİYOR</small></div>
+<div id="nogl">Bu cihazda WebGL çalışmıyor. Oyunu oynamak için güncel bir tarayıcı kullan.</div>
+<script>/*__BUNDLE__*/</script>
+</body>
+</html>
